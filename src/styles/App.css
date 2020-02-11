@@ -5,9 +5,12 @@
 }
 
 .logo {
+  align-content: center;
   height: 32px;
   background: rgba(255, 255, 255, 0.2);
-  margin: 16px;
+  margin: 10px 25px 10px;
+  background-image: url(../static/images/logo192.png);
+  background-repeat: no-repeat;
 }
 
 .App-logo {
@@ -28,3 +31,6 @@
 .App-link {
   color: #09d3ac;
 }
+
+
+ /* Add dataset modal, refactor later */

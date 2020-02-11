@@ -1,24 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment, useState } from 'react';
 import { Menu, Dropdown, Button, Icon, message } from 'antd';
 import { Layout, Breadcrumb } from 'antd';
 import { Modal } from 'antd';
-const { Header, Content, Footer, Sider } = Layout;
+import DatasetModalLogic from './DatasetModalLogic';
 
-function buildFileSelector(){
-  const fileSelector = document.createElement('input');
-  fileSelector.setAttribute('type', 'file');
-  fileSelector.setAttribute('multiple', 'multiple');
-  return fileSelector;
-}
+const { Header, Content, Footer, Sider } = Layout;
 
 class Datasets extends Component {
 
   state = { datasetModalVisible: false,
-            datasetModalForwardButton: false };
-
-  componentDidMount(){
-    this.fileSelector = buildFileSelector();
-  }
+            datasetModalForwardButton: false, 
+            ModalText: 'Content of the modal',
+          };
 
   addDatasetModal = () => {
     this.setState({
@@ -29,8 +22,15 @@ class Datasets extends Component {
   handleOk = e => {
     console.log(e);
     this.setState({
-      datasetModalVisible: false,
+      ModalText: 'The modal will be closed after two seconds',
+      confirmLoading: true,
     });
+    setTimeout(() => {
+      this.setState({
+        datasetModalVisible: false,
+        confirmLoading: false,
+      });
+    }, 2000);
   };
 
   handleCancel = e => {
@@ -40,18 +40,9 @@ class Datasets extends Component {
     });
   };
 
-  handleFileSelect = (e) => {
-    e.preventDefault();
-    this.fileSelector.click();
-  }
-
-  openFile = async () => {
-    let file;
-    let fileHandle;
-
-  };
   
     render() {
+      const { datasetModalVisible, confirmLoading, ModalText } = this.state;
       return( 
     <Layout>
       <Content>
@@ -61,15 +52,15 @@ class Datasets extends Component {
       <Modal
           title="Choose your dataset"
           visible={this.state.datasetModalVisible}
+          confirmLoading={confirmLoading}
           onOk={this.handleOk}
           onCancel={this.handleCancel}
           footer={[
             <Button key="back" onClick={this.handleCancel}>Cancel</Button>,
-            <Button key="submit" type="primary" onClick={this.handleOk} disabled>Next <Icon type="right" /></Button>
+            <Button key="submit" type="primary" onClick={this.handleOk}>Next <Icon type="right" /></Button>
           ]}
         >
-           <Button type="primary" onClick={this.handleFileSelect}>Select files</Button>
-
+          <DatasetModalLogic />
         </Modal>
    </Content>
     </Layout>
