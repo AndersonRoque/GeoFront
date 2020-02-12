@@ -11,6 +11,7 @@ import '../styles/App.css';
 class Geofront extends Component {
   render() {
     return (
+    
       <Router>
       <Layout style={{ minHeight: '100vh' }}>
         <SideNav />

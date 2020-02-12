@@ -47,7 +47,7 @@ class Datasets extends Component {
     <Layout>
       <Content>
       <Button type="primary" onClick={this.addDatasetModal} >
-        Add a Dataset
+        Add a local Dataset
       </Button>
       <Modal
           title="Choose your dataset"
