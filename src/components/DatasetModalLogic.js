@@ -3,8 +3,6 @@ import { connect } from 'react-redux'
 import { Menu, Dropdown, Button, Input, Icon, message, Select } from 'antd';
 
 
-
-
 class DatasetModalLogic extends Component {
   constructor(props) {
     super(props);
