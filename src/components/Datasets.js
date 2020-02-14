@@ -8,7 +8,8 @@ const { Header, Content, Footer, Sider } = Layout;
 
 class Datasets extends Component {
 
-  state = { datasetModalVisible: false,
+  state = { 
+            datasetModalVisible: false,
             datasetModalForwardButton: false, 
             ModalText: 'Content of the modal',
           };
@@ -53,12 +54,13 @@ class Datasets extends Component {
           title="Choose your dataset"
           visible={this.state.datasetModalVisible}
           confirmLoading={confirmLoading}
-          onOk={this.handleOk}
+          footer=''
+          //onOk={this.handleOk}
           onCancel={this.handleCancel}
-          footer={[
+          /*footer={[
             <Button key="back" onClick={this.handleCancel}>Cancel</Button>,
             <Button key="submit" type="primary" onClick={this.handleOk}>Next <Icon type="right" /></Button>
-          ]}
+          ]}*/
         >
           <DatasetModalLogic />
         </Modal>

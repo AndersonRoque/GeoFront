@@ -1,12 +1,13 @@
 import uuid from 'uuid';
 
-export const addDataset = ({ x = 0, y = 0, headers = '', mainProcessingLine = ''} = {}) => ({
+export const addDataset = ({ x = 0, y = 0, name = '', mainProcessingLine = ''} = {}) => ({
     type: 'ADD_DATASET',
-    expense: {
+    dataset: {
         id: uuid(),
+        name,
         x,
         y,
-        headers,
+        //headers,
         mainProcessingLine
     }
 });
