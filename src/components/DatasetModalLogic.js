@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
 import { Menu, Dropdown, Button, Input, Icon, message, Select } from 'antd';
+import { addDataset } from '../actions/datasets'
 
 
 class DatasetModalLogic extends Component {
@@ -10,12 +11,13 @@ class DatasetModalLogic extends Component {
     this.changeXValue = this.changeXValue.bind(this);
     this.changeYValue = this.changeYValue.bind(this);
     this.changeMPLValue = this.changeMPLValue.bind(this);
-
+    this.handleAddDataset = this.handleAddDataset.bind(this);
     this.state = { fileUploaded: false, 
                   headers: [],
                   X: '',
                   Y: '',
                   MPL: '',
+                  fileRef: [],
                   datasetName: '' }
   }
   
@@ -37,6 +39,10 @@ class DatasetModalLogic extends Component {
     this.setState({datasetName: event.target.value});
   }
 
+  handleAddDataset = () => {
+    addDataset(this.state.name, this.state.X, this.state.Y, this.state.headers, this.state.MPL, this.state.fileRef);
+    //this.props.closeModal()
+  };
 
   async handleFileInput() {
     const opts = {
@@ -62,6 +68,7 @@ class DatasetModalLogic extends Component {
     const file = await fileHandle.getFile();
     const fileext = file.name.slice((file.name.lastIndexOf(".") - 1 >>> 0) + 2); // Credits to StackOverflow
     const contents = await file.text();
+    this.setState({ fileRef: file });
 
     if(fileext === 'csv') {
       var splitContent = contents.split(/\r\n|\n/);
@@ -95,6 +102,7 @@ class DatasetModalLogic extends Component {
         
        // }
        if(this.state.fileUploaded) {
+        //console.log(this.state.fileRef);
         //console.log(this.state.headers); 
         return <div>
           <Button type="dashed" onClick={this.handleFileInput}>Change file</Button><br />
@@ -103,7 +111,8 @@ class DatasetModalLogic extends Component {
           Y: <select onChange={this.changeYValue}>{this.state.headers.map((header) => <option key={header}>{header}</option>)}</select><br />
           MPL: <select onChange={this.changeMPLValue}>{this.state.headers.map((header) => <option key={header}>{header}</option>)}</select><br />
           Datum: TO-DO<br />
-          <Button type="primary" disabled={!(this.state.X && this.state.Y && this.state.MPL && this.state.datasetName)}>Add</Button>
+
+          <Button type="primary" onClick={this.handleAddDataset()} disabled={!(this.state.X && this.state.Y && this.state.MPL && this.state.datasetName)}>Add</Button>
         </div>   
       };
   
@@ -118,4 +127,4 @@ class DatasetModalLogic extends Component {
     };
 }
 
-export default DatasetModalLogic;
+export default connect()(DatasetModalLogic);

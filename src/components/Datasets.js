@@ -3,22 +3,22 @@ import { Menu, Dropdown, Button, Icon, message } from 'antd';
 import { Layout, Breadcrumb } from 'antd';
 import { Modal } from 'antd';
 import DatasetModalLogic from './DatasetModalLogic';
+import DatasetsList from './DatasetsList';
 
 const { Header, Content, Footer, Sider } = Layout;
 
 class Datasets extends Component {
-
   state = { 
             datasetModalVisible: false,
             datasetModalForwardButton: false, 
-            ModalText: 'Content of the modal',
           };
 
   addDatasetModal = () => {
     this.setState({
-      datasetModalVisible: true,
+      datasetModalVisible: true
     });
   };
+
  
   handleOk = e => {
     console.log(e);
@@ -62,8 +62,9 @@ class Datasets extends Component {
             <Button key="submit" type="primary" onClick={this.handleOk}>Next <Icon type="right" /></Button>
           ]}*/
         >
-          <DatasetModalLogic />
+          <DatasetModalLogic closeModal={this.handleCancel} />
         </Modal>
+      <DatasetsList />
    </Content>
     </Layout>
       );
