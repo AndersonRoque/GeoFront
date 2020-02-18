@@ -10,15 +10,16 @@ class DatasetModalLogic extends Component {
     this.handleFileInput = this.handleFileInput.bind(this);
     this.changeXValue = this.changeXValue.bind(this);
     this.changeYValue = this.changeYValue.bind(this);
+    this.changeDatasetName = this.changeDatasetName.bind(this);
     this.changeMPLValue = this.changeMPLValue.bind(this);
     this.handleAddDataset = this.handleAddDataset.bind(this);
     this.state = { fileUploaded: false, 
                   headers: [],
+                  name: '',
                   X: '',
                   Y: '',
                   MPL: '',
-                  fileRef: [],
-                  datasetName: '' }
+                  fileRef: [] }
   }
   
   changeXValue = (event) => {
@@ -36,12 +37,14 @@ class DatasetModalLogic extends Component {
 
   changeDatasetName = (event) => {
     //console.log(event.target.value);
-    this.setState({datasetName: event.target.value});
+    this.setState({name: event.target.value});
   }
 
   handleAddDataset = () => {
-    addDataset(this.state.name, this.state.X, this.state.Y, this.state.headers, this.state.MPL, this.state.fileRef);
-    //this.props.closeModal()
+    this.props.dispatch(addDataset({name: this.state.name, 
+      x: this.state.x, y: this.state.y, mainProcessingLine: this.state.MPL, headers: this.state.headers, fileRef: this.state.fileRef} ));
+    console.log(this.state.name)
+    this.props.closeModal()
   };
 
   async handleFileInput() {
@@ -112,7 +115,7 @@ class DatasetModalLogic extends Component {
           MPL: <select onChange={this.changeMPLValue}>{this.state.headers.map((header) => <option key={header}>{header}</option>)}</select><br />
           Datum: TO-DO<br />
 
-          <Button type="primary" onClick={this.handleAddDataset()} disabled={!(this.state.X && this.state.Y && this.state.MPL && this.state.datasetName)}>Add</Button>
+          <Button type="primary" onClick={this.handleAddDataset} disabled={!(this.state.X && this.state.Y && this.state.MPL && this.state.name)}>Add</Button>
         </div>   
       };
   

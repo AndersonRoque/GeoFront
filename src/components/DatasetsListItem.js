@@ -1,18 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addDataset } from '../actions/datasets'
-
-addDataset(0, 0, 'aaaab', '', '', '', true);
 
 
-const DatasetsListItem = ({ dataset }) => (
+const DatasetsListItem = ({ id, name }) => (
   <li>
-    {dataset.name}
+    {name}
     <span>
-      {dataset.id}
+    {id}
     </span>
   </li>
 );
 
-// export default Todo;
+
 export default connect()(DatasetsListItem);

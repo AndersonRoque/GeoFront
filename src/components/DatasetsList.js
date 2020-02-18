@@ -1,10 +1,7 @@
-import React from "react";
-import { connect } from "react-redux";
-import DatasetsListItem from "./DatasetsListItem";
-// import { getTodos } from "../redux/selectors";
-import { getDatasetsByVisibilityFilter } from "../selectors/datasets";
-import { VISIBILITY_FILTERS } from "../constants";
-import { addDataset } from '../actions/datasets'
+import React from 'react';
+import { connect } from 'react-redux';
+import DatasetsListItem from './DatasetsListItem'
+import selectDatasets from '../selectors/datasets';
 
 
 const DatasetsList = (props) => (
@@ -16,10 +13,11 @@ const DatasetsList = (props) => (
   </div>
 );
 
-const mapStateToProps = state => {
-  const { visibilityFilter } = state;
-  const datasets = getDatasetsByVisibilityFilter(state, visibilityFilter);
-  return { datasets };
+
+const mapStateToProps = (state) => {
+  return {
+      datasets: selectDatasets(state.datasets, state.filters)
+  };
 };
 
 export default connect(mapStateToProps)(DatasetsList);
