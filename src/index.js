@@ -6,11 +6,6 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux'
 import configureStore from './store/configureStore.js';
 
-import { addDataset } from './actions/datasets';
-import { setTextFilter } from './actions/filters';
-import { getVisibleExpenses } from './selectors/datasets';
-
-
 const store = configureStore();
 
 /*store.dispatch(addDataset({ name: 'allalalala', x: 0, y: 0 }));

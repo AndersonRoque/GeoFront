@@ -1,11 +1,11 @@
-import React, { Component, Fragment, useState } from 'react';
-import { Menu, Dropdown, Button, Icon, message } from 'antd';
-import { Layout, Breadcrumb } from 'antd';
+import React, { Component } from 'react';
+import { Button } from 'antd';
+import { Layout } from 'antd';
 import { Modal } from 'antd';
 import DatasetModalLogic from './DatasetModalLogic';
 import DatasetsList from './DatasetsList';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Content } = Layout;
 
 class Datasets extends Component {
   state = { 

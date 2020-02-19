@@ -1,14 +1,17 @@
 import React from 'react';
-import { Layout } from 'antd';
-
-const { Header, Footer, Sider, Content } = Layout;
-
+import { Row, Col } from 'antd';
+import ProcessingFlowBar from './ProcessingFlowBar';
 
 const Processing = () => (
     <div>
-    <h1>Processing</h1>
-    <p>This is the processing page!</p>
+    <Row>
+      <Col span={21}>  
+      <h1>Processing</h1>
+      <p>This is the processing page!</p></Col>
 
+      <Col span={3}><ProcessingFlowBar /></Col>
+    
+    </Row>
   </div>
 );
 

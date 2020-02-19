@@ -1,6 +1,3 @@
-import React from 'react';
-
-
 import Config from '../components/Config';
 import Dashboard from '../components/Dashboard';
 import Datasets from '../components/Datasets';
@@ -21,7 +18,11 @@ const routes = [
     },
     { path: '/datasets',
       main: Datasets
-    }
+    },
+    { 
+    component: {PageNotFound},
+    path: '/pagenotfound'
+  },
 ]
 
 export default routes;

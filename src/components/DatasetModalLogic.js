@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Menu, Dropdown, Button, Input, Icon, message, Select } from 'antd';
+import { Button, Input, Select } from 'antd';
 import { addDataset } from '../actions/datasets'
 
 
@@ -43,7 +43,7 @@ class DatasetModalLogic extends Component {
   handleAddDataset = () => {
     this.props.dispatch(addDataset({name: this.state.name, 
       x: this.state.x, y: this.state.y, mainProcessingLine: this.state.MPL, headers: this.state.headers, fileRef: this.state.fileRef} ));
-    console.log(this.state.name)
+    //console.log(this.state.name)
     this.props.closeModal()
   };
 
@@ -92,8 +92,6 @@ class DatasetModalLogic extends Component {
     //  return ( <div>"Hello!"</div>)
    // };
 
-  // TO-DO Quinta: Seleção de Items e desaparecer botão
-  // TO-DO Sexta: Redux e display na janela dataset
     render() {
       let parametersChoice;
       const { Option } = Select;
