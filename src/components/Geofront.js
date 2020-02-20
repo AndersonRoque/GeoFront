@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import PageNotFound from '../components/PageNotFound';
 import SideNav from './SideNav'
 import routes from '../router/MainRoutes';
 import '../styles/App.css';

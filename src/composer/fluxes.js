@@ -1,28 +1,31 @@
 const fluxesClasses = [
     {
-      title: 'Plot',
+      title: 'Plotting Tools',
+      id: '1',
       children: [
         {
-          id: '002',
+          id: '1001',
           title: 'Create a Mesh'
         },
       ],
     },
     {
-      title: 'Export',
+      title: 'Exporting',
+      id: '2',
       children: [
         {
-          id: '003',
-          title: 'Export as Tiff'
+          id: '2001',
+          title: 'Export as Geotiff'
         },
       ],
     },
     {
       title: 'Inputs',
+      id: '3',
       children: [
         {
-          id: '001',
-          title: 'Add Dataset as Input'
+          id: '3001',
+          title: 'Dataset as Input'
         },
       ],
     },
