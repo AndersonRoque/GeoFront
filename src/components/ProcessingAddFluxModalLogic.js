@@ -6,7 +6,7 @@ import { Collapse } from 'antd';
 import FluxOptionsInterfaces from '../composer/FluxOptionsInterfaces';
 import { connect } from 'react-redux'
 import { addFlux } from '../actions/fluxes';
-import run  from '../composer/run';
+//import run from '../composer/run';
 import store from '../store/configureStore';
 const { Panel } = Collapse;
 
@@ -51,7 +51,7 @@ class ProcessingAddFluxModalLogic extends Component {
 
     handleAddFlux = () => {
       this.props.dispatch(addFlux({name: this.state.name, input: this.state.input, processing: this.state.fluxes }));
-      //console.log(this.state.fluxes);
+      //console.log(this.state.input);
       this.props.closeModal();
     };
 
@@ -59,7 +59,7 @@ class ProcessingAddFluxModalLogic extends Component {
       this.props.dispatch(addFlux({name: this.state.name, input: this.state.input, processing: this.state.fluxes }));
       //console.log(this.state.fluxes);
       this.props.closeModal();
-      run();
+      //run();
     };
 
     changeFluxName = (event) => {
@@ -102,7 +102,6 @@ class ProcessingAddFluxModalLogic extends Component {
       <Select defaultValue="Processing functions" style={{ width: 200 }} onChange={this.handleChange}>
           {options}
       </Select>
-            <Button type="primary" onClick={this.handleAddRunFlux}>Add n' Run</Button>
             <Button type="normal" onClick={this.handleAddFlux}>Add</Button>
         </div>
       );
